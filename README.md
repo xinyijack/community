@@ -62,15 +62,18 @@ http://localhost:8887
 ## 其他
 1. 视频初期未使用 Flyway 之前的数据库脚本
 ```sql
-CREATE TABLE USER
+create table USER
 (
-    ID int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    ACCOUNT_ID VARCHAR(100),
-    NAME VARCHAR(50),
-    TOKEN VARCHAR(36),
-    GMT_CREATE BIGINT,
-    GMT_MODIFIED BIGINT
+   ID           INT auto_increment NOT NULL ,
+   ACCOUNT_ID   VARCHAR(100),
+   NAME         VARCHAR(50),
+   TOKEN        CHAR(36),
+   GMT_CREATE   BIGINT,
+   GMT_MODIFIED BIGINT,
+   constraint USER_PK
+      primary key (ID)
 );
+
 ```
 2. 生成 Model 等 MyBatis 配置文件的命令
 ```
