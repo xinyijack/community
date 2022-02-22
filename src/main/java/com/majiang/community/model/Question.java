@@ -7,19 +7,23 @@ import lombok.NoArgsConstructor;
 /**
  * @author jack
  * @version 1.0.0
- * @ClassName User.java
+ * @ClassName Question.java
  * @Description TODO
- * @createTime 2022年02月18日 18:55:00
+ * @createTime 2022年02月22日 11:03:00
  */
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@Data
+public class Question {
+
     private Integer id;
-    private String name;
-    private String accountId;
-    private String token;
+    private String title;
+    private String description;
+    private String tag;
     private Long gmtCreate;
     private Long gmtModified;
-    private String avatarUrl;
+    private Integer creator;
+    private Integer viewCount;
+    private Integer commentCount;
+    private Integer likeCount;
 }
