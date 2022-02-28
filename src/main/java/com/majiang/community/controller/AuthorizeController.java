@@ -25,6 +25,7 @@ import java.util.UUID;
  */
 @Controller
 public class AuthorizeController {
+
     @Autowired
     private GithubProvider githubProvider;
 
