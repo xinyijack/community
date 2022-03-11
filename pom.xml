@@ -50,12 +50,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.199</version>
-        </dependency>
-
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -75,6 +69,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.4.0</version>
         </dependency>
     </dependencies>
 
@@ -103,6 +102,29 @@
                     <driver>com.mysql.cj.jdbc.Driver</driver>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.28</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <configurationFile>src/main/resources/mybatisGenerator_xyj.xml</configurationFile>
+                    <!--允许移动生成的文件 -->
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-maven-plugin</artifactId>
+                        <version>1.4.0</version>
+                    </dependency>
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>

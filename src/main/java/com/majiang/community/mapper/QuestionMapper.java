@@ -1,41 +1,41 @@
 package com.majiang.community.mapper;
 
-import com.majiang.community.DTO.QuestionDTO;
 import com.majiang.community.model.Question;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
+import com.majiang.community.model.QuestionExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
-/**
- * @author jack
- * @version 1.0.0
- * @ClassName QuestionMapper.java
- * @Description TODO
- * @createTime 2022年02月21日 16:33:00
- */
-@Mapper
 public interface QuestionMapper {
-    @Insert("insert into question(title, description, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag) values (#{title}, #{description}, #{gmtCreate}, #{gmtModified}, #{creator}, #{commentCount}, #{viewCount}, #{likeCount}, #{tag})")
-    void create(Question question);
+    long countByExample(QuestionExample example);
 
-    @Select("select * from question")
-    List<Question> listAll();
+    int deleteByExample(QuestionExample example);
 
-    @Select("select count(1) from question")
-    Integer count();
+    int deleteByPrimaryKey(Long id);
 
-    @Select("select * from question limit #{offset}, #{size}")
-    List<Question> list(@Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
+    int insert(Question record);
 
-    @Select("select count(1) from question where creator = #{userId}")
-    Integer countByUserId(@Param(value = "userId") Integer userId);
+    int insertSelective(Question record);
 
-    @Select("select * from question where creator = #{userId} limit #{offset}, #{size}")
-    List<Question> listByUserId(@Param(value = "userId") Integer userId, @Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
+    List<Question> selectByExampleWithBLOBsWithRowbounds(QuestionExample example, RowBounds rowBounds);
 
-    @Select("select * from question where id = #{id}")
-    Question getById(@Param(value = "id") Integer id);
+    List<Question> selectByExampleWithBLOBs(QuestionExample example);
+
+    List<Question> selectByExampleWithRowbounds(QuestionExample example, RowBounds rowBounds);
+
+    List<Question> selectByExample(QuestionExample example);
+
+    Question selectByPrimaryKey(Long id);
+
+    int updateByExampleSelective(@Param("record") Question record, @Param("example") QuestionExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") Question record, @Param("example") QuestionExample example);
+
+    int updateByExample(@Param("record") Question record, @Param("example") QuestionExample example);
+
+    int updateByPrimaryKeySelective(Question record);
+
+    int updateByPrimaryKeyWithBLOBs(Question record);
+
+    int updateByPrimaryKey(Question record);
 }
