@@ -1,6 +1,6 @@
 package com.majiang.community.controller;
 
-import com.majiang.community.DTO.CommentDTO;
+import com.majiang.community.DTO.CommentCreateDTO;
 import com.majiang.community.DTO.ResultDTO;
 import com.majiang.community.exception.CustomizeErrorCode;
 import com.majiang.community.mapper.CommentMapper;
@@ -9,13 +9,11 @@ import com.majiang.community.model.User;
 import com.majiang.community.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author jack
@@ -34,8 +32,8 @@ public class CommentController {
     CommentService commentService;
 
     @ResponseBody
-    @PostMapping (value = "/comment")
-    public Object post(@RequestBody CommentDTO commentDTO, HttpServletRequest request) {
+    @RequestMapping(value = "/comment")
+    public Object post(@RequestBody CommentCreateDTO commentDTO, HttpServletRequest request) {
         User user = (User)request.getSession().getAttribute("user");
         if (user == null) return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         Comment comment = new Comment();
