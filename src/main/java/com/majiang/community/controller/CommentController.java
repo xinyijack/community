@@ -7,6 +7,7 @@ import com.majiang.community.mapper.CommentMapper;
 import com.majiang.community.model.Comment;
 import com.majiang.community.model.User;
 import com.majiang.community.service.CommentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,17 +34,22 @@ public class CommentController {
 
     @ResponseBody
     @RequestMapping(value = "/comment")
-    public Object post(@RequestBody CommentCreateDTO commentDTO, HttpServletRequest request) {
+    public Object post(@RequestBody CommentCreateDTO commentCreateDTO, HttpServletRequest request) {
         User user = (User)request.getSession().getAttribute("user");
-        if (user == null) return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
+        if (user == null) {
+            return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
+        }
+        if (null == commentCreateDTO || StringUtils.isBlank(commentCreateDTO.getContent())) {
+            return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
+        }
         Comment comment = new Comment();
-        comment.setParentId(commentDTO.getParentId());
-        comment.setContent(commentDTO.getContent());
+        comment.setParentId(commentCreateDTO.getParentId());
+        comment.setContent(commentCreateDTO.getContent());
         comment.setCommentator(1L);
         comment.setLikeCount(0L);
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(System.currentTimeMillis());
-        comment.setType(commentDTO.getType());
+        comment.setType(commentCreateDTO.getType());
         commentService.insert(comment);
         return ResultDTO.okOf();
     }
