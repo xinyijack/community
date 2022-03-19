@@ -19,9 +19,11 @@ public class Comment implements Serializable {
 
     private String content;
 
+    private Integer commentCount;
+
     private static final long serialVersionUID = 1L;
 
-    public Comment(Long id, Long parentId, Integer type, Long commentator, Long gmtCreate, Long gmtModified, Long likeCount, String content) {
+    public Comment(Long id, Long parentId, Integer type, Long commentator, Long gmtCreate, Long gmtModified, Long likeCount, String content, Integer commentCount) {
         this.id = id;
         this.parentId = parentId;
         this.type = type;
@@ -30,6 +32,7 @@ public class Comment implements Serializable {
         this.gmtModified = gmtModified;
         this.likeCount = likeCount;
         this.content = content;
+        this.commentCount = commentCount;
     }
 
     public Comment() {
@@ -98,5 +101,13 @@ public class Comment implements Serializable {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 }
