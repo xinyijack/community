@@ -2,6 +2,7 @@ package com.majiang.community.controller;
 
 import com.majiang.community.DTO.CommentDTO;
 import com.majiang.community.DTO.QuestionDTO;
+import com.majiang.community.enums.CommentTypeEnum;
 import com.majiang.community.service.CommentService;
 import com.majiang.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class QuestionController {
     public String question(@PathVariable(value = "id") Long id, Model model) {
         QuestionDTO questionDTO = questionService.getById(id);
 
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         //增加累加阅读数
         questionService.incView(id);
         model.addAttribute("question", questionDTO);
