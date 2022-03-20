@@ -15,6 +15,11 @@
       </constructor>
   </resultMap>
 
+    <sql id="Base_Column_List">
+        id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count,
+    tag
+    </sql>
+
   <update id="incView" parameterType="com.majiang.community.model.Question">
     update question
     set
@@ -27,5 +32,12 @@
     set
     comment_count = comment_count + #{commentCount,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
-  </update>
+    </update>
+
+    <select id="selectRelated" parameterType="com.majiang.community.model.Question" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from question where id != #{id} and tag regexp #{tag}
+    </select>
+
 </mapper>
