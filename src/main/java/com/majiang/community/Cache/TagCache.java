@@ -1,10 +1,12 @@
 package com.majiang.community.Cache;
 
 import com.majiang.community.DTO.TagDTO;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author jack
@@ -18,7 +20,7 @@ public class TagCache {
         ArrayList<TagDTO> tagDTOS = new ArrayList<>();
         TagDTO program = new TagDTO();
         program.setCategoryName("开发语言");
-        program.setTags(Arrays.asList("js","php","css","html","python","java","C++","ruby","node.js","swift"));
+        program.setTags(Arrays.asList("js","php","css","html","python","Java","C++","ruby","node.js","swift"));
         tagDTOS.add(program);
 
         TagDTO framwork = new TagDTO();
@@ -31,6 +33,26 @@ public class TagCache {
         server.setTags(Arrays.asList("Linux","Unix","Mac OS","Windows","Centos"));
         tagDTOS.add(server);
 
+        TagDTO db = new TagDTO();
+        db.setCategoryName("数据库");
+        db.setTags(Arrays.asList("Mysql","Redis","mongodb","sql","sql server","postgresql","sqlite","oracle"));
+        tagDTOS.add(db);
+
+        TagDTO tool = new TagDTO();
+        tool.setCategoryName("开发工具");
+        tool.setTags(Arrays.asList("Git","github","visual-studio-code","vim","sublime-text"));
+        tagDTOS.add(tool);
+
         return tagDTOS;
+    }
+
+    public static String filterInvalid(String tags) {
+        String[] split = StringUtils.split(tags, ",");
+        List<TagDTO> tagDTOS = getTags();
+
+        List<String> tagList = tagDTOS.stream().flatMap(tag -> tag.getTags().stream()).collect(Collectors.toList());
+        String invalid = Arrays.stream(split).filter(t -> !tagList.contains(t)).collect(Collectors.joining(","));
+
+        return invalid;
     }
 }

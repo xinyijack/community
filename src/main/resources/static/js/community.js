@@ -120,7 +120,7 @@ function collapseComment(e) {
     }
 }
 
-function selectTag(value) {
+function selectTag(e) {
     var previous = $("#tag").val();
 
     if (previous.indexOf(value) == -1) {

@@ -5,6 +5,7 @@ import com.majiang.community.DTO.QuestionDTO;
 import com.majiang.community.model.Question;
 import com.majiang.community.model.User;
 import com.majiang.community.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,18 +57,25 @@ public class PublishController {
         model.addAttribute("title", title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
+        model.addAttribute("tags", TagCache.getTags());
 
         if (title == null || title == "") {
             model.addAttribute("error", "标题不能为空");
-            return "/publish";
+            return "publish";
         }
         if (description == null || description == "") {
             model.addAttribute("error", "问题补充不能为空");
-            return "/publish";
+            return "publish";
         }
         if (tag == null || tag == "") {
             model.addAttribute("error", "标签不能为空");
-            return "/publish";
+            return "publish";
+        }
+
+        String invalid = TagCache.filterInvalid(tag);
+        if (StringUtils.isNotBlank(invalid)) {
+            model.addAttribute("error", "输入非法标签" + invalid);
+            return "publish";
         }
 
         User user = (User) request.getSession().getAttribute("user");
