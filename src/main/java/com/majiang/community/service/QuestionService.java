@@ -167,12 +167,11 @@ public class QuestionService {
         question.setId(queryDTO.getId());
         question.setTag(regexpTag);
         List<Question> questionList = questionExtMapper.selectRelated(question);
-        questionList.stream().map(q -> {
+        List<QuestionDTO> questionDTOS = questionList.stream().map(q -> {
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(q, questionDTO);
             return questionDTO;
         }).collect(Collectors.toList());
-
-        return queryDTO;
+        return questionDTOS;
     }
 }

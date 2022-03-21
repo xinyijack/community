@@ -34,7 +34,7 @@
     where id = #{id,jdbcType=BIGINT}
     </update>
 
-    <select id="selectRelated" parameterType="com.majiang.community.model.Question" resultMap="BaseResultMap">
+    <select id="selectRelated" parameterType="com.majiang.community.model.Question" resultMap="BaseResultMapExt">
         select
         <include refid="Base_Column_List" />
         from question where id != #{id} and tag regexp #{tag}

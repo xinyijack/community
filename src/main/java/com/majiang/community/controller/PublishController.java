@@ -1,5 +1,6 @@
 package com.majiang.community.controller;
 
+import com.majiang.community.Cache.TagCache;
 import com.majiang.community.DTO.QuestionDTO;
 import com.majiang.community.model.Question;
 import com.majiang.community.model.User;
@@ -34,6 +35,8 @@ public class PublishController {
         model.addAttribute("description", question.getDescription());
         model.addAttribute("tag", question.getTag());
         model.addAttribute("id", question.getId());
+
+        model.addAttribute("tags", TagCache.getTags());
         return "publish";
     }
 
