@@ -41,8 +41,9 @@ public class PublishController {
         return "publish";
     }
 
-    @GetMapping(value = "/publish")
-    public String publish() {
+    @GetMapping("/publish")
+    public String publish(Model model) {
+        model.addAttribute("tags", TagCache.getTags());
         return "publish";
     }
 

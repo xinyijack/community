@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
  */
 public class TagCache {
     public static List<TagDTO> getTags() {
-        ArrayList<TagDTO> tagDTOS = new ArrayList<>();
+        List<TagDTO> tagDTOS = new ArrayList<>();
         TagDTO program = new TagDTO();
         program.setCategoryName("开发语言");
-        program.setTags(Arrays.asList("js","php","css","html","python","Java","C++","ruby","node.js","swift"));
+        program.setTags(Arrays.asList("javascript","php","CSS","Html","Java","C++","Ruby","Node.js","Swift","Python","C#","GO","perl","Node","Erlang"));
         tagDTOS.add(program);
 
         TagDTO framwork = new TagDTO();
@@ -51,7 +51,7 @@ public class TagCache {
         List<TagDTO> tagDTOS = getTags();
 
         List<String> tagList = tagDTOS.stream().flatMap(tag -> tag.getTags().stream()).collect(Collectors.toList());
-        String invalid = Arrays.stream(split).filter(t -> !tagList.contains(t)).collect(Collectors.joining(","));
+        String invalid = Arrays.stream(split).filter(t -> StringUtils.isBlank(t) || !tagList.contains(t)).collect(Collectors.joining(","));
 
         return invalid;
     }
