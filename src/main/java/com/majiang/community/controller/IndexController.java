@@ -1,6 +1,7 @@
 package com.majiang.community.controller;
 
 import com.majiang.community.DTO.PaginationDTO;
+import com.majiang.community.DTO.QuestionDTO;
 import com.majiang.community.mapper.UserMapper;
 import com.majiang.community.model.User;
 import com.majiang.community.service.QuestionService;
@@ -31,7 +32,7 @@ public class IndexController {
     @GetMapping(value = "/")
     public String index(HttpServletRequest request, Model model, @RequestParam(name = "page", defaultValue = "1") Integer page, @RequestParam(name = "size", defaultValue = "5")Integer size) {
 
-        PaginationDTO paginationDTO = questionService.list(page, size);
+        PaginationDTO<QuestionDTO> paginationDTO = questionService.list(page, size);
         model.addAttribute("paginationDTO", paginationDTO);
         return  "index";
     }

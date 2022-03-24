@@ -12,7 +12,6 @@ import com.majiang.community.model.QuestionExample;
 import com.majiang.community.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,10 +42,13 @@ public class QuestionService {
 
     public PaginationDTO list(Integer page, Integer size) {
         Integer totalPage;
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
         //计算总页数totalPage
-        totalPage = getTotalPage(size, totalCount);
+        Integer quotient = totalCount / size;
+        Integer residue = totalCount % size;
+        if (residue == 0) totalPage = quotient;
+        else totalPage = quotient + 1;
 
         if (page < 1) page = 1;
         if (page > totalPage && totalPage > 0) page = totalPage;
@@ -68,25 +70,21 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         return paginationDTO;
-    }
-
-    @NotNull
-    private Integer getTotalPage(Integer size, Integer totalCount) {
-        Integer totalPage;
-        Integer quotient = totalCount / size;
-        Integer residue = totalCount % size;
-        if (residue == 0) totalPage = quotient;
-        else totalPage = quotient + 1;
-        return totalPage;
     }
 
     public PaginationDTO list(Long userId, Integer page, Integer size) {
         Integer totalPage;
-        PaginationDTO paginationDTO = new PaginationDTO();
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
-        totalPage = getTotalPage(size, totalCount);
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
+        QuestionExample questionExample = new QuestionExample();
+        questionExample.createCriteria().andCreatorEqualTo(userId);
+        Integer totalCount = (int) questionMapper.countByExample(questionExample);
+        //计算总页数
+        Integer quotient = totalCount / size;
+        Integer residue = totalCount % size;
+        if (residue == 0) totalPage = quotient;
+        else totalPage = quotient + 1;
 
         if (page < 1) page = 1;
         if (page > totalPage && totalPage != 0) page = totalPage;
@@ -97,11 +95,10 @@ public class QuestionService {
 
         Integer offset = (page - 1) * size;
         QuestionExample example = new QuestionExample();
-        example.createCriteria().andIdEqualTo(userId);
+        example.createCriteria().andCreatorEqualTo(userId);
 
         List<Question> questionList = questionMapper.selectByExampleWithRowbounds(example, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-
 
         for (Question question : questionList) {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
@@ -110,7 +107,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         return paginationDTO;
     }
 
