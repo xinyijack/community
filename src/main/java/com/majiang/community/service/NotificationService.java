@@ -2,6 +2,7 @@ package com.majiang.community.service;
 
 import com.majiang.community.DTO.NotificationDTO;
 import com.majiang.community.DTO.PaginationDTO;
+import com.majiang.community.enums.NotificationStatusEnum;
 import com.majiang.community.enums.NotificationTypeEnum;
 import com.majiang.community.exception.CustomizeErrorCode;
 import com.majiang.community.exception.CustomizeException;
@@ -33,9 +34,6 @@ public class NotificationService {
     @Autowired
     private NotificationMapper notificationMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
     public PaginationDTO list(Long id, Integer page, Integer size) {
         PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<>();
 
@@ -58,6 +56,7 @@ public class NotificationService {
 
         Integer offset = (page - 1) * size;
         NotificationExample example = new NotificationExample();
+        example.setOrderByClause("gmt_create DESC");
         example.createCriteria().andReceiverEqualTo(id);
 
         List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(example, new RowBounds(offset, size));
@@ -70,7 +69,7 @@ public class NotificationService {
         for (Notification notification : notifications) {
             NotificationDTO notificationDTO = new NotificationDTO();
             BeanUtils.copyProperties(notification, notificationDTO);
-            notificationDTO.setType(NotificationTypeEnum.nameOfType(notification.getType()));
+            notificationDTO.setTypeName(NotificationTypeEnum.nameOfType(notification.getType()));
             notificationDTOS.add(notificationDTO);
         }
 
@@ -80,7 +79,9 @@ public class NotificationService {
 
     public Long unreadCount(Long userId) {
         NotificationExample notificationExample = new NotificationExample();
-        notificationExample.createCriteria().andReceiverEqualTo(userId);
+        notificationExample.createCriteria()
+                .andReceiverEqualTo(userId)
+                .andStatusEqualTo(NotificationStatusEnum.UNREAD.getStatus());
         return notificationMapper.countByExample(notificationExample);
     }
 
@@ -92,6 +93,8 @@ public class NotificationService {
         if (!Objects.equals(notification.getReceiver(), user.getId())) {
             throw new CustomizeException(CustomizeErrorCode.READ_NOTIFICATION_FAIL);
         }
+        notification.setStatus(NotificationStatusEnum.READ.getStatus());
+        notificationMapper.updateByPrimaryKey(notification);
 
         NotificationDTO notificationDTO = new NotificationDTO();
         BeanUtils.copyProperties(notification, notificationDTO);

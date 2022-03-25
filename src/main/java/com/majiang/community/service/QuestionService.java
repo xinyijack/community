@@ -95,6 +95,7 @@ public class QuestionService {
 
         Integer offset = (page - 1) * size;
         QuestionExample example = new QuestionExample();
+        example.setOrderByClause("gmt_modified DESC");
         example.createCriteria().andCreatorEqualTo(userId);
 
         List<Question> questionList = questionMapper.selectByExampleWithRowbounds(example, new RowBounds(offset, size));
