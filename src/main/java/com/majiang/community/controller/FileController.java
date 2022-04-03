@@ -1,7 +1,10 @@
 package com.majiang.community.controller;
 
 import com.majiang.community.DTO.FIleDTO;
+import com.majiang.community.enums.COSGroupEnum;
+import com.majiang.community.enums.SeparatorEnum;
 import com.majiang.community.provider.QCloudProvider;
+import com.majiang.community.utils.FileUtils;
 import com.qcloud.cos.model.UploadResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,10 @@ public class FileController {
         try {
             InputStream inputStream = file.getInputStream();
             long length = inputStream.available();
-            qCloudProvider.upload("community/" + file.getOriginalFilename(), inputStream, length);
+            String fileName = file.getOriginalFilename();
+            String newUUIDFileName = FileUtils.newUUIDFileName(fileName);
+            String uploadName = COSGroupEnum.COMMUNITY.getName() + SeparatorEnum.LINUX.getName() + newUUIDFileName;
+            qCloudProvider.upload(uploadName, inputStream, length);
         } catch (IOException e) {
             e.printStackTrace();
         }
