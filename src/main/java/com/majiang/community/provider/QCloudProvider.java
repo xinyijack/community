@@ -230,35 +230,5 @@ public class QCloudProvider {
         }
     }
 
-    public URL generatePresignedUrl(COSClient cosClient, String bucketName, String key, Date expiration, HttpMethodName method, Map<String, String> headers, Map<String, String> params, Boolean signPrefixMode, Boolean signHost) throws CosClientException {
-        // 调用 COS 接口之前必须保证本进程存在一个 COSClient 实例，如果没有则创建
-// 详细代码参见本页：简单操作 -> 创建 COSClient
 
-
-// 存储桶的命名格式为 BucketName-APPID，此处填写的存储桶名称必须为此格式
-
-// 对象键(Key)是对象在存储桶中的唯一标识。详情请参见 [对象键](https://cloud.tencent.com/document/product/436/13324)
-
-
-// 设置签名过期时间(可选), 若未进行设置则默认使用 ClientConfig 中的签名过期时间(1小时)
-// 这里设置签名在半个小时后过期
-        Date expirationDate = new Date(System.currentTimeMillis() + 30 * 60 * 1000);
-
-// 填写本次请求的参数，需与实际请求相同，能够防止用户篡改此签名的 HTTP 请求的参数
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("param1", "value1");
-
-// 填写本次请求的头部，需与实际请求相同，能够防止用户篡改此签名的 HTTP 请求的头部
-        Map<String, String> headers = new HashMap<String, String>();
-        headers.put("header1", "value1");
-
-// 请求的 HTTP 方法，上传请求用 PUT，下载请求用 GET，删除请求用 DELETE
-        HttpMethodName method = HttpMethodName.GET;
-
-        URL url = cosClient.generatePresignedUrl(bucketName, key, expirationDate, method, headers, params);
-        System.out.println(url.toString());
-
-// 确认本进程不再使用 cosClient 实例之后，关闭之
-        cosClient.shutdown();
-    }
 }
