@@ -17,6 +17,7 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 /**
  * @author jack
@@ -36,19 +37,21 @@ public class FileController {
     public FIleDTO upload(HttpServletRequest request) {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("editormd-image-file");
+        String url = "";
         try {
             InputStream inputStream = file.getInputStream();
             long length = inputStream.available();
             String fileName = file.getOriginalFilename();
             String newUUIDFileName = FileUtils.newUUIDFileName(fileName);
             String uploadName = COSGroupEnum.COMMUNITY.getName() + SeparatorEnum.LINUX.getName() + newUUIDFileName;
-            qCloudProvider.upload(uploadName, inputStream, length);
+            URL urlPreview = qCloudProvider.upload(uploadName, inputStream, length);
+            url = urlPreview.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
         FIleDTO fileDTO = new FIleDTO();
         fileDTO.setSuccess(1);
-        fileDTO.setUrl("/images/wechat.jpeg");
+        fileDTO.setUrl(url);
         return fileDTO;
     }
 }

@@ -1,5 +1,6 @@
 package com.majiang.community.provider;
 
+import com.qcloud.cos.COS;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.auth.BasicCOSCredentials;
@@ -9,6 +10,7 @@ import com.qcloud.cos.exception.CosClientException;
 import com.qcloud.cos.exception.CosServiceException;
 import com.qcloud.cos.http.HttpMethodName;
 import com.qcloud.cos.http.HttpProtocol;
+import com.qcloud.cos.model.GeneratePresignedUrlRequest;
 import com.qcloud.cos.model.ObjectMetadata;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.model.UploadResult;
@@ -44,7 +46,7 @@ public class QCloudProvider {
     @Value("${qcloud.bucket.name}")
     private String bucketName;
     // 上传对象
-    public UploadResult upload(String key,
+    public URL upload(String key,
                                InputStream inputStream,
                                long inputStreamLength) throws CosClientException {
         // 使用高级接口必须先保证本进程存在一个 TransferManager 实例，如果没有则创建
@@ -58,24 +60,37 @@ public class QCloudProvider {
 
         PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, inputStream, objectMetadata);
 
+        URL urlPreview = null;
         try {
             // 高级接口会返回一个异步结果Upload
             // 可同步地调用 waitForUploadResult 方法等待上传完成，成功返回UploadResult, 失败抛出异常
             Upload upload = transferManager.upload(putObjectRequest);
             showTransferProgress(upload);
             UploadResult uploadResult = upload.waitForUploadResult();
-            return uploadResult;
+
+
+            Date expirationDate = new Date(System.currentTimeMillis() + 60 * 60 * 1000);
+            HttpMethodName method = HttpMethodName.GET;
+            GeneratePresignedUrlRequest req = new GeneratePresignedUrlRequest(bucketName, key, method);
+            req.setExpiration(expirationDate);
+            COSClient cosClient = createCOSClient();
+            URL url = cosClient.generatePresignedUrl(req);
+            cosClient.shutdown();
+            return url;
         } catch (CosServiceException e) {
             e.printStackTrace();
         } catch (CosClientException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         // 确定本进程不再使用 transferManager 实例之后，关闭之
 // 详细代码参见本页：高级接口 -> 关闭 TransferManager
         shutdownTransferManager(transferManager);
-        return new UploadResult();
+
+        return urlPreview;
     }
 
     // 创建 TransferManager 实例，这个实例用来后续调用高级接口
