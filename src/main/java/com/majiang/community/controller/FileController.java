@@ -44,8 +44,7 @@ public class FileController {
             String fileName = file.getOriginalFilename();
             String newUUIDFileName = FileUtils.newUUIDFileName(fileName);
             String uploadName = COSGroupEnum.COMMUNITY.getName() + SeparatorEnum.LINUX.getName() + newUUIDFileName;
-            URL urlPreview = qCloudProvider.upload(uploadName, inputStream, length);
-            url = urlPreview.toString();
+            url = qCloudProvider.upload(uploadName, inputStream, length);
         } catch (IOException e) {
             e.printStackTrace();
         }

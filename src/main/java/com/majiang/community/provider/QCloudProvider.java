@@ -1,16 +1,15 @@
 package com.majiang.community.provider;
 
-import com.qcloud.cos.COS;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
-import com.qcloud.cos.auth.BasicCOSCredentials;
+import com.qcloud.cos.Headers;
 import com.qcloud.cos.auth.BasicSessionCredentials;
 import com.qcloud.cos.auth.COSCredentials;
+import com.qcloud.cos.auth.COSSigner;
 import com.qcloud.cos.exception.CosClientException;
 import com.qcloud.cos.exception.CosServiceException;
 import com.qcloud.cos.http.HttpMethodName;
 import com.qcloud.cos.http.HttpProtocol;
-import com.qcloud.cos.model.GeneratePresignedUrlRequest;
 import com.qcloud.cos.model.ObjectMetadata;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.model.UploadResult;
@@ -18,7 +17,6 @@ import com.qcloud.cos.region.Region;
 import com.qcloud.cos.transfer.*;
 import com.tencent.cloud.CosStsClient;
 import com.tencent.cloud.Credentials;
-import com.tencent.cloud.Response;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +43,9 @@ public class QCloudProvider {
 
     @Value("${qcloud.bucket.name}")
     private String bucketName;
+
     // 上传对象
-    public URL upload(String key,
+    public String upload(String key,
                                InputStream inputStream,
                                long inputStreamLength) throws CosClientException {
         // 使用高级接口必须先保证本进程存在一个 TransferManager 实例，如果没有则创建
@@ -68,15 +67,18 @@ public class QCloudProvider {
             showTransferProgress(upload);
             UploadResult uploadResult = upload.waitForUploadResult();
 
-
-            Date expirationDate = new Date(System.currentTimeMillis() + 60 * 60 * 1000);
+            //设置过期日期expirationDate，请求方法method，客户端配置类clientConfig
+            Date expirationDate = new Date(System.currentTimeMillis() + 10 * 365 * 24 * 60 * 60 * 1000);
             HttpMethodName method = HttpMethodName.GET;
-            GeneratePresignedUrlRequest req = new GeneratePresignedUrlRequest(bucketName, key, method);
-            req.setExpiration(expirationDate);
+
+            // 填写本次请求的参数，需与实际请求相同，能够防止用户篡改此签名的 HTTP 请求的参数
+            Map<String, String> params = new HashMap<String, String>();
+
+            // 填写本次请求的头部，需与实际请求相同，能够防止用户篡改此签名的 HTTP 请求的头部
+            Map<String, String> headers = new HashMap<String, String>();
+
             COSClient cosClient = createCOSClient();
-            URL url = cosClient.generatePresignedUrl(req);
-            cosClient.shutdown();
-            return url;
+            urlPreview = cosClient.generatePresignedUrl(bucketName, key, expirationDate, method, headers, params);
         } catch (CosServiceException e) {
             e.printStackTrace();
         } catch (CosClientException e) {
@@ -90,7 +92,24 @@ public class QCloudProvider {
 // 详细代码参见本页：高级接口 -> 关闭 TransferManager
         shutdownTransferManager(transferManager);
 
-        return urlPreview;
+        return urlPreview.toString();
+    }
+
+    //使用临时密钥获取签名
+    private String getSign(String key, Date expirationDate, HttpMethodName method, ClientConfig clientConfig) {
+        Credentials credentials = GetCredential();
+        String secretId = credentials.tmpSecretId;
+        String secretKey = credentials.tmpSecretKey;
+        String sessionToken = credentials.sessionToken;
+        COSCredentials cred = new BasicSessionCredentials(secretId, secretKey, sessionToken);
+
+        COSSigner signer = new COSSigner();
+        Map<String, String> params = new HashMap<>();
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put(Headers.HOST, clientConfig.getEndpointBuilder().buildGeneralApiEndpoint(bucketName));
+        String sign = signer.buildAuthorizationStr(method, key, headers, params, cred, expirationDate, true);
+        return sign;
     }
 
     // 创建 TransferManager 实例，这个实例用来后续调用高级接口
@@ -184,6 +203,7 @@ public class QCloudProvider {
         System.out.println(transfer.getState());
     }
 
+    //使用永久密钥生成凭证Credentials
     public Credentials GetCredential() {
         TreeMap<String, Object> config = new TreeMap<String, Object>();
 
@@ -233,7 +253,8 @@ public class QCloudProvider {
                     "name/cos:ListMultipartUploads",
                     "name/cos:ListParts",
                     "name/cos:UploadPart",
-                    "name/cos:CompleteMultipartUpload"
+                    "name/cos:CompleteMultipartUpload",
+                    "name/cos:GetObject"
             };
             config.put("allowActions", allowActions);
 
