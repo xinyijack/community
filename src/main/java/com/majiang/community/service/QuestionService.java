@@ -2,6 +2,7 @@ package com.majiang.community.service;
 
 import com.majiang.community.DTO.PaginationDTO;
 import com.majiang.community.DTO.QuestionDTO;
+import com.majiang.community.DTO.QuestionQueryDTO;
 import com.majiang.community.exception.CustomizeErrorCode;
 import com.majiang.community.exception.CustomizeException;
 import com.majiang.community.mapper.QuestionExtMapper;
@@ -40,10 +41,20 @@ public class QuestionService {
     @Autowired
     UserMapper userMapper;
 
-    public PaginationDTO list(Integer page, Integer size) {
+    public PaginationDTO list(String search, Integer page, Integer size) {
+
+        if (StringUtils.isNotBlank(search)) {
+            String[] tags = StringUtils.split(search, " ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
+
         Integer totalPage;
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
+
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+
+        Integer totalCount = questionExtMapper.countBySearch(new QuestionQueryDTO());
         //计算总页数totalPage
         Integer quotient = totalCount / size;
         Integer residue = totalCount % size;
@@ -57,9 +68,9 @@ public class QuestionService {
 
         //计算总页码数
         Integer offset = (page - 1) * size;
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.setOrderByClause("gmt_modified DESC");
-        List<Question> questionList = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        questionQueryDTO.setPage(offset);
+        questionQueryDTO.setSize(size);
+        List<Question> questionList = questionExtMapper.selectBySearch(questionQueryDTO);
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
 
