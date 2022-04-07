@@ -1,6 +1,5 @@
 package com.majiang.community.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -15,7 +14,7 @@ import java.util.UUID;
  * @date 2022年04月03日 14:46
  * @Version TODO
  */
-@Slf4j
+
 public class FileUtils {
     private static List<String> suffix = new ArrayList<>();
 
@@ -70,7 +69,7 @@ public class FileUtils {
         try {
             file.delete();
         } catch (Exception e) {
-            log.debug("FILE_UTILS_ERROR", e);
+            e.printStackTrace();
         }
     }
 }
