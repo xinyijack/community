@@ -5,6 +5,7 @@ import com.majiang.community.DTO.GithubUser;
 import com.majiang.community.model.User;
 import com.majiang.community.provider.GithubProvider;
 import com.majiang.community.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import java.util.UUID;
  * @createTime 2022年02月16日 15:04:00
  */
 @Controller
+@Slf4j
 public class AuthorizeController {
 
     @Autowired
@@ -64,7 +66,10 @@ public class AuthorizeController {
             response.addCookie(cookie);
             return "redirect:/";
         }
-        else return "redirect:/";
+        else {
+            log.error("callback get github error,{}", githubUser);
+            return "redirect:/";
+        }
     }
 
     @GetMapping(value = "/logout")

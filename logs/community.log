@@ -1,0 +1,311 @@
+2022-04-12 10:24:44.938  INFO 5590 --- [restartedMain] c.m.community.CommunityApplication       : Starting CommunityApplication using Java 1.8.0_291 on JackdeMacBook-Pro.local with PID 5590 (/Users/jack/IdeaProjects/community/target/classes started by jack in /Users/jack/IdeaProjects/community)
+2022-04-12 10:24:44.942  INFO 5590 --- [restartedMain] c.m.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2022-04-12 10:24:44.997  INFO 5590 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-04-12 10:24:44.998  INFO 5590 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-04-12 10:24:46.493  INFO 5590 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2022-04-12 10:24:46.502  INFO 5590 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-12 10:24:46.502  INFO 5590 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-04-12 10:24:46.572  INFO 5590 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-12 10:24:46.572  INFO 5590 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1574 ms
+2022-04-12 10:24:47.662  INFO 5590 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-04-12 10:24:47.714  INFO 5590 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2022-04-12 10:24:47.730  INFO 5590 --- [restartedMain] c.m.community.CommunityApplication       : Started CommunityApplication in 3.375 seconds (JVM running for 4.046)
+2022-04-12 10:24:54.180  INFO 5590 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-12 10:24:54.181  INFO 5590 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-12 10:24:54.182  INFO 5590 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-12 10:24:54.243  INFO 5590 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-12 10:24:54.635  INFO 5590 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-12 10:24:54.646 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:24:54.665 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:24:54.699 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:24:54.705 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:24:54.705 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:24:54.720 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:24:54.721 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:54.721 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:24:54.727 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:54.738 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:54.738 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:54.739 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:54.740 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:54.744 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:54.746 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:54.746 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:54.747 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:54.749 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:54.750 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:54.751 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:54.752 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:58.665 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:24:58.671 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:24:58.676 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:24:58.678 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:24:58.679 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 5(Integer), 5(Integer)
+2022-04-12 10:24:58.683 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:24:58.684 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:58.684 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:58.686 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:58.689 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:58.690 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:58.692 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:58.692 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:58.693 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:58.695 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:58.695 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:58.696 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:58.697 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:24:58.697 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:24:58.698 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:24:58.699 DEBUG 5590 --- [http-nio-8887-exec-10] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:00.717 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:00.720 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:00.724 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:00.726 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:00.727 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 10(Integer), 5(Integer)
+2022-04-12 10:25:00.734 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : <==      Total: 4
+2022-04-12 10:25:00.736 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:00.737 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:00.740 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:00.744 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:00.744 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:00.747 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:00.748 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:00.749 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:00.751 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:00.755 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:00.756 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:00.759 DEBUG 5590 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:05.198 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:05.199 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:05.203 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:05.205 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:05.207 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:25:05.226 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:25:05.227 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:05.228 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:25:05.231 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:05.232 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:05.234 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:05.237 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:05.243 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:05.244 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:05.246 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:05.247 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:05.247 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:05.249 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:05.251 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:05.251 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:05.261 DEBUG 5590 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:09.765  INFO 5590 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-12 10:25:09.786  INFO 5590 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-04-12 10:25:42.131  INFO 5628 --- [restartedMain] c.m.community.CommunityApplication       : Starting CommunityApplication using Java 1.8.0_291 on JackdeMacBook-Pro.local with PID 5628 (/Users/jack/IdeaProjects/community/target/classes started by jack in /Users/jack/IdeaProjects/community)
+2022-04-12 10:25:42.132  INFO 5628 --- [restartedMain] c.m.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2022-04-12 10:25:42.183  INFO 5628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-04-12 10:25:42.183  INFO 5628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-04-12 10:25:43.631  INFO 5628 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2022-04-12 10:25:43.642  INFO 5628 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-12 10:25:43.643  INFO 5628 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-04-12 10:25:43.723  INFO 5628 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-12 10:25:43.724  INFO 5628 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1540 ms
+2022-04-12 10:25:44.748  INFO 5628 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-04-12 10:25:44.792  INFO 5628 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2022-04-12 10:25:44.814  INFO 5628 --- [restartedMain] c.m.community.CommunityApplication       : Started CommunityApplication in 3.055 seconds (JVM running for 3.574)
+2022-04-12 10:25:48.665  INFO 5628 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-12 10:25:48.665  INFO 5628 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-12 10:25:48.667  INFO 5628 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-04-12 10:25:48.711  INFO 5628 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-12 10:25:49.034  INFO 5628 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-12 10:25:49.047 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:49.064 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:49.077 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:49.083 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:49.083 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:25:49.090 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:25:49.090 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:49.091 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:25:49.092 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:49.105 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:49.105 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:49.106 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:49.107 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:49.110 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:49.111 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:49.111 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:49.111 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:49.113 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:49.114 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:49.114 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:49.116 DEBUG 5628 --- [http-nio-8887-exec-1] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:54.153 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:54.157 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:54.163 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:54.166 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:54.167 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 5(Integer), 5(Integer)
+2022-04-12 10:25:54.172 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:25:54.173 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:54.173 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:54.177 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:54.179 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:54.180 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:54.182 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:54.182 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:54.183 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:54.185 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:54.187 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:54.187 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:54.189 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:54.190 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:54.190 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:54.191 DEBUG 5628 --- [http-nio-8887-exec-2] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:55.462 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:55.464 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:55.468 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:55.471 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:55.472 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 10(Integer), 5(Integer)
+2022-04-12 10:25:55.482 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.Q.selectBySearch                 : <==      Total: 4
+2022-04-12 10:25:55.485 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:55.485 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:55.491 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:55.493 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:55.493 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:55.498 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:55.499 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:55.500 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:55.502 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:55.509 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:55.509 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:55.512 DEBUG 5628 --- [http-nio-8887-exec-3] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:57.417 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:25:57.418 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:25:57.421 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:25:57.423 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:25:57.424 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:25:57.442 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:25:57.443 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:57.444 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:25:57.450 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:57.451 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:57.452 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:57.455 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:57.462 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:57.463 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:57.464 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:57.465 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:57.466 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:57.467 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:25:57.468 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:25:57.469 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:25:57.477 DEBUG 5628 --- [http-nio-8887-exec-4] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:03.033 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER WHERE ( ACCOUNT_ID = ? )
+2022-04-12 10:26:03.037 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.mapper.UserMapper.selectByExample  : ==> Parameters: 102945561(String)
+2022-04-12 10:26:03.041 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-04-12 10:26:03.043 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.m.U.updateByPrimaryKeySelective    : ==>  Preparing: update USER SET NAME = ?, TOKEN = ?, GMT_MODIFIED = ?, avatar_url = ? where ID = ?
+2022-04-12 10:26:03.043 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.m.U.updateByPrimaryKeySelective    : ==> Parameters: jackxyj(String), 562282f4-dba3-47b2-b06b-178a90191487(String), 1649730363042(Long), https://avatars.githubusercontent.com/u/102945561?v=4(String), 4(Long)
+2022-04-12 10:26:03.061 DEBUG 5628 --- [http-nio-8887-exec-5] c.m.c.m.U.updateByPrimaryKeySelective    : <==    Updates: 1
+2022-04-12 10:26:03.083 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER WHERE ( TOKEN = ? )
+2022-04-12 10:26:03.084 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.mapper.UserMapper.selectByExample  : ==> Parameters: 562282f4-dba3-47b2-b06b-178a90191487(String)
+2022-04-12 10:26:03.086 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-04-12 10:26:03.098 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? )
+2022-04-12 10:26:03.099 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.N.countByExample                 : ==> Parameters: 4(Long), 0(Integer)
+2022-04-12 10:26:03.105 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.N.countByExample                 : <==      Total: 1
+2022-04-12 10:26:03.108 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:26:03.108 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:26:03.109 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:26:03.110 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:26:03.110 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:26:03.113 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:26:03.114 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:03.114 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:26:03.115 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:03.117 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:03.117 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:03.118 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:03.119 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:03.119 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:03.121 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:03.121 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:03.122 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:03.122 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:03.123 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:03.123 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:03.124 DEBUG 5628 --- [http-nio-8887-exec-6] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:05.875 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER WHERE ( TOKEN = ? )
+2022-04-12 10:26:05.880 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.mapper.UserMapper.selectByExample  : ==> Parameters: 562282f4-dba3-47b2-b06b-178a90191487(String)
+2022-04-12 10:26:05.886 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-04-12 10:26:05.891 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? )
+2022-04-12 10:26:05.892 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.N.countByExample                 : ==> Parameters: 4(Long), 0(Integer)
+2022-04-12 10:26:05.894 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.N.countByExample                 : <==      Total: 1
+2022-04-12 10:26:05.896 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:26:05.896 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:26:05.898 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:26:05.903 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:26:05.904 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 5(Integer), 5(Integer)
+2022-04-12 10:26:05.908 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:26:05.908 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:05.909 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:05.913 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:05.916 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:05.916 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:05.918 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:05.920 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:05.920 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:05.921 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:05.922 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:05.923 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:05.924 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:05.925 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:05.925 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:05.929 DEBUG 5628 --- [http-nio-8887-exec-7] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:06.978 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER WHERE ( TOKEN = ? )
+2022-04-12 10:26:06.983 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.mapper.UserMapper.selectByExample  : ==> Parameters: 562282f4-dba3-47b2-b06b-178a90191487(String)
+2022-04-12 10:26:06.991 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-04-12 10:26:06.999 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? )
+2022-04-12 10:26:07.000 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.N.countByExample                 : ==> Parameters: 4(Long), 0(Integer)
+2022-04-12 10:26:07.004 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.N.countByExample                 : <==      Total: 1
+2022-04-12 10:26:07.012 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:26:07.012 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:26:07.014 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:26:07.015 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:26:07.018 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 10(Integer), 5(Integer)
+2022-04-12 10:26:07.022 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.Q.selectBySearch                 : <==      Total: 4
+2022-04-12 10:26:07.024 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:07.024 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:07.027 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:07.029 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:07.029 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:07.031 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:07.033 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:07.033 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:07.034 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:07.034 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:07.035 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:07.035 DEBUG 5628 --- [http-nio-8887-exec-8] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:08.756 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER WHERE ( TOKEN = ? )
+2022-04-12 10:26:08.763 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.mapper.UserMapper.selectByExample  : ==> Parameters: 562282f4-dba3-47b2-b06b-178a90191487(String)
+2022-04-12 10:26:08.771 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-04-12 10:26:08.778 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? )
+2022-04-12 10:26:08.782 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.N.countByExample                 : ==> Parameters: 4(Long), 0(Integer)
+2022-04-12 10:26:08.785 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.N.countByExample                 : <==      Total: 1
+2022-04-12 10:26:08.787 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question
+2022-04-12 10:26:08.788 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-04-12 10:26:08.789 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-04-12 10:26:08.791 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?, ?
+2022-04-12 10:26:08.792 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-04-12 10:26:08.798 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-04-12 10:26:08.800 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:08.800 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 4(Long)
+2022-04-12 10:26:08.801 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:08.803 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:08.804 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:08.805 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:08.806 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:08.806 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:08.807 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:08.807 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:08.807 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:08.808 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:08.810 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, bio, avatar_url from USER where ID = ?
+2022-04-12 10:26:08.810 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-04-12 10:26:08.811 DEBUG 5628 --- [http-nio-8887-exec-9] c.m.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-04-12 10:26:15.300  INFO 5628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-12 10:26:15.319  INFO 5628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
